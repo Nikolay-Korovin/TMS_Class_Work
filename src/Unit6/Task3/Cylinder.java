@@ -1,11 +1,18 @@
 package Unit6.Task3;
 
-public class Cylinder extends SolidOfRevolution{
+public class Cylinder extends SolidOfRevolution {
     double height;
-    Cylinder(double volume){
+    String name = "Cylinder";
+
+    public String getName() {
+        return name;
+    }
+
+    Cylinder(double volume) {
         this.volume = volume;
     }
-    Cylinder(int height, int radius){
-        this.volume = Math.PI * (Math.pow(radius,2)) * height;
+
+    Cylinder(int height, int radius) {
+        this.volume = Math.PI * (Math.pow(radius, 2)) * height;
     }
 }

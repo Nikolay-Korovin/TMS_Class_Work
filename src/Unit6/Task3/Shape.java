@@ -2,7 +2,13 @@ package Unit6.Task3;
 
 public abstract class Shape {
     double volume;
-    double getVolume(){
+    String name;
+
+    String getName() {
+        return this.getName();
+    }
+
+    double getVolume() {
         return this.volume;
     }
 }
