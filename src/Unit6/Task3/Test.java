@@ -5,15 +5,14 @@ import java.util.Arrays;
 public class Test {
     public static void main(String[] args) {
         int counter = 0;
-        Box box = new Box(500);
-        box.add(new Pyramid(10,15), new Cylinder(10), new Pyramid(10));
-        for (int i = 0; i < 41; i++) {
-            box.add(new Pyramid(10));
-        }
-        box.add(new Pyramid(10,15), new Cylinder(15), new Pyramid(14));
+        Box box = new Box(100);
+        box.add(new Pyramid(20), new Cylinder(30), new Pyramid(15));
+        box.add(new Pyramid(20), new Cylinder(30), new Pyramid(15));
 
         for (int i = 0; i < box.boxArray.length; i++) {
-            System.out.println(box.boxArray[i] + " " + ++counter);
+            if(box.boxArray[i] != null) {
+                System.out.println(box.boxArray[i].getVolume() + " " + ++counter);
+            }
         }
     }
 }

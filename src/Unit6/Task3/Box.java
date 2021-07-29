@@ -26,12 +26,12 @@ public class Box extends Shape {
                 counter2++;
             }
         }
-        if (counter2 == boxArray.length - 5) {
-            boxArray = Arrays.copyOf(boxArray, boxArray.length * 2);
-        }
         if (shape.length >= boxArray.length && volume > 0) {
             boxArray = Arrays.copyOf(boxArray, boxArray.length * 2);
+        } else if (counter2 > boxArray.length - 4) {
+            boxArray = Arrays.copyOf(boxArray, boxArray.length * 2);
         }
+
         for (int i = 0; i < boxArray.length; i++) {
             if (boxArray[i] != null) {
                 counter++;
@@ -42,12 +42,12 @@ public class Box extends Shape {
 
         if (volume > 0) {
             for (int i = 0; i < shape.length; i++) {
-                if(shape[i].getVolume() < volume) {
-                    System.out.println("Запихиваем в коробку " + shape[i].getName() + " обьёмом " + shape[i].getVolume());
-                    volume = volume - shape[i].getVolume();
-                    boxArray[i + counter] = shape[i];
-                    System.out.println("в коробке осталось " + getVolume());
-                }
+                    if (shape[i].getVolume() <= volume) {
+                        System.out.println("Запихиваем в коробку " + shape[i].getName() + " обьёмом " + shape[i].getVolume());
+                        volume = volume - shape[i].getVolume();
+                        boxArray[i + counter] = shape[i];
+                        System.out.println("в коробке осталось " + getVolume());
+                    }
             }
         }
         if (volume > 0) {
