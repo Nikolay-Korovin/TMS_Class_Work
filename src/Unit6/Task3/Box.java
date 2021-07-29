@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Box extends Shape {
+    int mainCounter =0;
     private final int DEFAULT_SIZE = 10;
     Shape[] boxArray = new Shape[DEFAULT_SIZE];
 
@@ -18,26 +19,17 @@ public class Box extends Shape {
     }
 
     boolean add(Shape... shape) {
-        int counter2 = 0;
         int counter = 0;
 
-        for (int i = counter2; i < boxArray.length; i++) {
+        for (int i = counter; i < boxArray.length; i++) {
             if (boxArray[i] != null) {
-                counter2++;
+                counter++;
             }
         }
         if (shape.length >= boxArray.length && volume > 0) {
             boxArray = Arrays.copyOf(boxArray, boxArray.length * 2);
-        } else if (counter2 > boxArray.length - 4) {
+        } else if (counter > boxArray.length - 4) {
             boxArray = Arrays.copyOf(boxArray, boxArray.length * 2);
-        }
-
-        for (int i = 0; i < boxArray.length; i++) {
-            if (boxArray[i] != null) {
-                counter++;
-            } else {
-                break;
-            }
         }
 
         if (volume > 0) {
@@ -45,8 +37,9 @@ public class Box extends Shape {
                     if (shape[i].getVolume() <= volume) {
                         System.out.println("Запихиваем в коробку " + shape[i].getName() + " обьёмом " + shape[i].getVolume());
                         volume = volume - shape[i].getVolume();
-                        boxArray[i + counter] = shape[i];
+                        boxArray[mainCounter] = shape[i];
                         System.out.println("в коробке осталось " + getVolume());
+                        mainCounter++;
                     }
             }
         }
